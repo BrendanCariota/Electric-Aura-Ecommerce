@@ -1,0 +1,68 @@
+---------------------------------
+CREATING A FULL STACK APPLICATION
+---------------------------------
+
+FOLDER SETUP
+We will have TWO folder in our project folder [frontend, backend]
+- FRONTEND - this is created with (npx create-react-app frontend) and is where we will install all of our frontend/react dependencies
+- BACKEND - this is created manually and will hold our server.js file as to run our backend as well as our env files and routes
+
+GIT
+We will use (git init) in our main project root folder to initialze a git repository at the root encompassing both the frontend and backend folders
+
+FRONTEND
+The frontend is setup like a traditional react application installing all of the dependencies need in the frontend section
+We can use npm start to run this as it's own seperate thing in the being to get basic functionalty and styling
+
+BACKEND
+After we create the backend folder we will create our server.js file to start our server
+
+SETTING UP THE BACKEND
+We must install a few useful packages (express, dotenv) 
+Express lets us interact easily with our database and dotenv lets us setup an (.env) file to house import information like our PORT and MONGO_URI
+We will use the newer es7 module syntax to import what we need vs the older require syntax
+To utilze this feature we need to add ("type": "module",) to our global package.json file
+- 1. We can now import express to connect to our server (import express from 'express') notice this syntax is the same as react to make things easier
+- 2. We can import dotenv and setup an (.env) file to house our basic information as the start
+- (.env) we will put our PORT=5000 and our MONGO_URI in this file for now
+- 3. Run express (const app = express())
+We can now start setting up some basic routes
+We will set up (app.get("/), (req, res) => { res.send("The is the home page") }) just to make sure we can hit our routes
+Finally we will setup our listen so we can actually tell the server where to run on our local machine
+- const PORT = process.env.PORT - this will set our PORT from our .env file to this variable for use in our application 
+- (app.listen(PORT, console.log(Server started on port ${PORT})))
+- to send static data from it we can just use res.json(data) to pass the json data when we hit the link we are looking for
+- We can now run our server
+
+SETTING UP NODEMON AND CONCURRENTLY
+We will set these two things up real quick to make development much easier
+- 1. Install nodemon and concurrently in the root folder
+- 2. We will then go to the root package.json and add the following
+-   "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+This will allow us to run both the react frontend and the backend with nodemon by utilzing the (npm run dev) command
+
+SETTING UP AND CONNECTING MONGODB
+We will set up a MongoDB cluster and database like normal
+- Make sure to add yourself as a user and add your ip address so we can connect
+We will now install MONGOOSE to manipulate our database
+- npm install mongoose in our root folder
+We will now create a Database connection file
+- 1. Create a new folder called configs in our backend folder
+- 2. create a file (db.js) -> This will be where we connect to our database
+- 3. import mongoose and setup our async function to connect to the database
+- 4. Import our function for connecting into our (server.js) file
+- 5. Call that function and we should be good to connect
+
+MODELING OUR DATA
+Create a models folder in our backend and setup the models we need
+In this case its Users, Products, and Orders
+Create and export the schemas
+
+PREPARING TEMPORARY DATA TO BUILD THE APPLICATION
+- Install (bcryptjs) in root folder so we can hash our passwords (encrypt)
+- Create a products.js and users.js file following our schema so we have some information to work with
+- Hash the user passwords with bcryptjs
+- CREATE A SEEDER SCRIPT to seed our Mongo Database with the products and users we created
