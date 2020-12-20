@@ -65,4 +65,47 @@ PREPARING TEMPORARY DATA TO BUILD THE APPLICATION
 - Install (bcryptjs) in root folder so we can hash our passwords (encrypt)
 - Create a products.js and users.js file following our schema so we have some information to work with
 - Hash the user passwords with bcryptjs
-- CREATE A SEEDER SCRIPT to seed our Mongo Database with the products and users we created
+- CREATE A SEEDER SCRIPT (Temporary) to seed our Mongo Database with the products and users we created
+- seeder script at (seeder.js)
+
+FETCHING PRODUCTS FROM THE Database
+We will create a routes folder in our backend to help maintain structure
+- 1. Start with creating the proudctRoutes file (productRoutes.js)
+- - We will import express and utilze router
+- - Create the routes
+- 2. Connect them to (server.js) by importing the (productRoutes.js) file
+- - Next we will app.use(/api/products) because all of our productRoutes will start with that
+- 3. Install express-async-handler which is a middleware that handles our try catches so we dont have to
+- - Add middleware to routes
+- 4. Setup POSTMAN
+- MIDDLEWARE is a function that has access to the (req, res) life cycle
+- - We will create a middleware folder in our backend and the create or errorMiddleware file
+- - create the two pieces of middleware
+- - Import them into our (server.js) and call them at the bottom with (app.use())
+
+REDUX
+- 1. Install redux, react-redux redux-thunk(make async req in action creators) redux-devtools-extension
+- 2. Create (store.js) file in src folder in frontend
+- 3. To implement our store we need to use a proivder (react-redux) in our (index.js) file
+
+REDUCERS
+- 1. Setup a reducers folder in our src
+- 2. We will start setting up the productReducer
+- 3. To use the reducers we must add it to (store.js)
+
+ACTIONS
+- 1. Create an actions folder in our source
+- 2. We will start by creating our productActions
+
+BRINGING REDUX STATE TO OUR HOME SCREEN
+- - We no longer need to keep our state in our HomeScreen component or use our useEffect to fetch the products from the backend
+- 1. Import useDispatch and useSelector from 'react-redux' in our Home Screen
+- - useSelector is used to grab pieces of state from redux
+
+CREATING NEW FUNCTIONALITY
+- 1. [Constants] Add new constants to use in your reducers (constants) folder
+- 2. [Reducer] Create a new reducer for the functionality
+- 3. [Store] When a new reducer is created we need to add it to our store
+- 4. [Action] Create a new action
+- 5. [Component] Go to the component and useDispatch and useSelector to incorporate the state into your component and bring in action
+
