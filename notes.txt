@@ -109,3 +109,14 @@ CREATING NEW FUNCTIONALITY
 - 4. [Action] Create a new action
 - 5. [Component] Go to the component and useDispatch and useSelector to incorporate the state into your component and bring in action
 
+CONTROLLERS
+- 1. In backend create a folder for our controllers
+- - We just want our routes pointing at routes so we will put the logic into the controllers
+- 2. Import our models and asyncHandler into this file that way our routes file can just point to it
+
+USER AUTHENTICATION ENDPOINT
+- 1. Create a userRoute and userController
+- 2. Add this app.use(express.json()) to our (server.js) so we can parse JSON data
+- 3. Add the route to (server.js)
+- 4. Add bcrypt to our USER model to handle the encrypted passwords
+- 5. Implement the bcrypt function in the (userController) to check if the passwords match if not throw an errorMiddleware
