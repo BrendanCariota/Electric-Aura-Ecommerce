@@ -120,3 +120,112 @@ USER AUTHENTICATION ENDPOINT
 - 3. Add the route to (server.js)
 - 4. Add bcrypt to our USER model to handle the encrypted passwords
 - 5. Implement the bcrypt function in the (userController) to check if the passwords match if not throw an errorMiddleware
+
+JWT (JSON WEB TOKENS)
+- - AUTHENTICATION - Authenticate (Create) a user in the database or see if they are already in there
+- - AUTHENTICATION - Give that authenticated user access to part of the webpage they are allowed
+- 1. Install jsonwebtoken
+- 2. Create a (generateToken.js) file to put your function
+- 3. Add the JWT_SECRET in our (.evn) file
+- 4. Add the functionality to our (userController.js)
+
+CUSTOM AUTHENTICATION MIDDLEWARE
+- 1. Add a new function getUserProfile to our (userController.js)
+- 2. Add that route to our (userRoutes.js) file so we can hit it
+- 3. In our middleware folder create a new file (authMiddleware.js)
+- 4. Create the middleware besure to call (next()) because were are working with middleware
+- 5. Import the middleware into our (userRoutes.js) and pass it as the first argument to use it
+- 6. We can now add protect wherever we want to protect a route
+
+SAVE THE TOKEN IN POSTMAN
+- 1. Get rid of current header if there is one
+- 2. Add a test on our /login route -- pm.environment.set("TOKEN", pm.response.json().token)
+- 3. Go to authorization on a protect route in our case /profile
+- 4. Choose 'Bearer Token' and make sure the variable is passed in
+
+USER REGISTRATION AND PASSWORD ENCRYPTION
+- 1. Setup Postman route
+- 2. Create function in (userController.js)
+- 3. Import that function in (userRoutes.js)
+- 4. ENCRYPT THE PASSWORD
+- - 1. To do this we will go to our (userModel.js) and create a piece of middleware that will let us do something on saves, finds, or other actions
+- - 2. Before we save will add middleware to encrypt password using bcrypt
+- - 3. we will call the method but add .pre because we want this to happen before the save
+
+USER LOGIN REDUCER AND ACTION
+- 1. Create the constant
+- 2. Create our (userReducers.js)
+- 3. Bring it in to our (store.js)
+- 5. Create our (userActions.js)
+- 6. We need to go to our (store.js) and load our initial userInfo for localStorage like we did with our cart items
+
+USER LOGIN SCREEN AND FUNCTIONALITY
+- 1. Create new screen (LoginScreen.js)
+- 2. We will also create a new component (FormContainer.js) because we will reuse this for our other forms in our application
+- 3. Create a route for the (LoginScreen.js) so we can see it by going to (App.js)
+
+SHOW USER IN NAVBAR AND LOGOUT
+- 1. Go to (Header.js) we will add functionality to change 'Sign In' to the users name once they are signed in
+- - 1. Import useDispatch, useSelector so we can get our state as well as call our logout action
+- - 2. Use parenthesis to create a condition to display based on if (userInfo) exists
+- - 3. Go to our (userActions.js) and create our logout userActions
+- - - 1. our logout action consisists of removing 'userInfo' from localStorage and dispatching USER_LOGOUT
+- - 4. We then dispatch this action in our (Header.js) file to log our user out
+
+USER REGISTER REDUCER, ACTION, SCREEN
+- 1. Create new user contants in (userConstants.js) for registering
+- 2. Create a userRegisterReducer in (userReducer.js)
+- 3. Bring in the reducer to (store.js)
+- 4. Create a register action in (userActions.js)
+- 5. Create the screen for registering (RegisterScreen.js)
+- 6. Add the Screen in (App.js)
+
+CREATING OUR UPDATE PROFILE ENDPOINT (BACKEND)
+- 1. Add an updateUserProfile Controller which is a PUT request to our (userController.js) in the backend
+- 2. Bring it in to our (userRoutes.js)
+
+PROFILE SCREEN AND GET USER DETAILS
+- 1. Create constants for USER_DETAILS
+- 2. Create a new reducer
+- 3. Import reducer to (store.js)
+- 4. Create a new action for our users details
+- 5. Create a new (ProfileScreen.js) file for our profile screen
+- 6. Add our ProfileScreen to (App.js)
+
+UPDATE USER PROFILE
+- 1. Create new constants for USER_UPDATE
+- 2. Create a new reducer for user update profile
+- 3. Add the new reducer to (store.js)
+- 4. Create a new action for updating user profiles
+- 5. We should now be able to dispatch this in our (ProfileScreen.js)
+
+SHIPPING SCREEN AND SAVE ADDRESS
+- 1. Create our (ShippingScreen.js)
+- 2. Add it to our (app.js)
+- 3. Create an action in (cartActions.js) to save the users shipping info and continue to the next screen
+- 4. Create the constants we need for the actions and reducers
+- 5. Create the reducer for it in (cartReducer.js)
+- 6. Since we are saving our shipping address through localStorage we want to initially load it from local storage in (store.js)
+- 7. We want to add our shippingAddress as inital state in our cartReducer
+
+CREATE THE CHECKOUT STEPS COMPONENT
+- 1. Create the (CheckoutSteps.js) component
+- 2. Insert the component into our (ShippingScreen.js)
+
+PAYMENT SCREEN AND SAVE PAYMENT METHOD
+- 1. Create (PaymentScreen.js)
+- 2. Import (PaymentScreen.js) into our (App.js)
+- 3. Create the savePaymentMethodAction
+- 4. Create our constants
+- 5. Create our reducer in (cartReducer.js)
+- 6. Bring it into (store.js) and set our intial state or savePaymentMethod
+
+PLACE ORDER SCREEN
+- 1. Create (PlaceOrderScreen.js)
+- 2. Import (PlaceOrderScreen.js) into our (App.js)
+- 3. We will now need to go into our backend to create the routes for Placing an Order and adding it to the Database
+
+ORDER CONTROLLER AND ROUTE (BACKEND FUNCTIONALITY)
+- 1. Create our new (orderController.js)
+- 2. Create our (orderRoutes.js) for our route
+- 3. Since we created a new route we need to add it to our (server.js)

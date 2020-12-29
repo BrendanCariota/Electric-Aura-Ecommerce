@@ -6,6 +6,7 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 
 import productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRoutes.js'
+import orderRoutes from './routes/orderRoutes.js'
 
 // Allows us to setup and use an .env file
 dotenv.config()
@@ -26,6 +27,7 @@ app.get('/', (req, res) => {
 // SETTING UP ROUTES
 app.use('/api/products', productRoutes) //Products
 app.use('/api/users', userRoutes) //Users
+app.use('/api/orders', orderRoutes) //Orders
 
 
 // Calling our MIDDLEWARE
