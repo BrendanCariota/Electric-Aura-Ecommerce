@@ -28,6 +28,7 @@ app.get('/', (req, res) => {
 app.use('/api/products', productRoutes) //Products
 app.use('/api/users', userRoutes) //Users
 app.use('/api/orders', orderRoutes) //Orders
+app.get('/api/config/paypal', (req, res) => res.send(process.env.PAYPAL_CLIENT_ID)) //Paypal
 
 
 // Calling our MIDDLEWARE

@@ -229,3 +229,133 @@ ORDER CONTROLLER AND ROUTE (BACKEND FUNCTIONALITY)
 - 1. Create our new (orderController.js)
 - 2. Create our (orderRoutes.js) for our route
 - 3. Since we created a new route we need to add it to our (server.js)
+
+CREATE ORDER
+- 1. We are going to go back to the frontend now that we have create our controller and routes 
+- 2. Create a new constants file called (orderConstants.js)
+- 3. Create a new reducer (orderReducer.js)
+- 4. Bring this reducer into our store
+- 5. Create new action file called (orderActions.js)
+- 6. Bring this action into our (PlaceOrderScreen.js)
+- 7. We now need to bring our order state into our PlaceOrderScreen because once we create we will need the info to display it
+
+GET ORDER BY ID ENDPOINT (FETCH ORDER FROM DATABASE)
+- 1. Go to our order controller
+- 2. Once we add the getOrderById method to our controller we will add the route to hit to our (orderRoutes.js)
+
+ORDER DETAILS REDUCER AND ACTION
+- 1. Create constants for getting order details
+- 2. Create the action for getting our orderDetails
+- 3. Create the reducer for orderDetailsReducer
+- 4. Add this reducer to our store
+
+ORDER SCREEN
+- 1. Create the (OrderScreen.js)
+- 2. Add the screen to (App.js)
+
+UPDATE TO PAID ENDPOINT
+- 1. Go to (orderController.js)
+- 2. Create updateOrderToPaid in controller
+- 3. Go to our routes and update them
+
+ORDER PAY REDUCER AND ACTION
+- 1. Create our constants for ORDER PAY
+- 2. Create our reducer for order PaymentScreen
+- 3. Import our reducer into our (store.js)
+- 4. Create the action for order pay
+
+ADDING PAYPAL PAYMENTS 
+- 1. Go to Developer Paypal and create a new app
+- 2. We will take our client ID from this and store in our backend (dotenv)
+- 3. We will put the route right in (server.js)
+- 4. When we are ready to make a payment we will hit that route and fetch our Paypal client ID
+- 5. To use Paypal in our app we need to use a specific script from the Paypal website
+- 6. We will build this dynamically in our (OrderScreen.js) so we will need our Client Id 
+- 7. We now need to bring in our orderPayAction and our orderPay state
+- 8. For the Paypal Pay Button we will use an NPM package called react-paypal-button-v2 install this in the frontend
+- 9. Import the package in (OrderScreen.js)
+
+SHOW ORDERS ON PROFILE
+- 1. To show a Users orders on their profile page we first need to start in the backend and create new routes for it
+- 2. Import to orderRoutes make sure its above the others because they run in order
+- 3. Back to the frontend
+- 4. We will set up our constants for getting orders on our profile
+- 5. Set up our reducer in (orderReducer.js)
+- 6. Bring it into our (store.js)
+- 7. Create our orderListMy action
+- 8. We will go to the (ProfileScreen.js) and add the order view functionality
+
+USER DETAILS & ORDERS RESET
+- 1. Currently when you logout of an account and login as someone else the previous users order information is still on the profile screen
+- -  We want to fix this so we have the user orders reset on logout
+- 2. To do this we will go to our (orderController.js) and create a new ORDER_MY_LIST_RESET so we can reset the info
+- 3. Go to our reducer for (orderReducer.js) and add a new case for RESET
+- 4. We will do the same thing for our Users in (userConstants.js)
+- 5. Add USER_DETAILS_RESET to reset them on logout
+- 6. Go to (userReducers.js) and add a new reset case
+- 7. We can the go to where we logout which is in our (userActions.js)
+- 8. In the userActions we will bring in our two newly created constants
+- 9. On the logout action we will just dispatch both of those
+
+ADMIN MIDDLEWARE AND GET USERS ENDPOINT
+- 1. We need to create middleware that checks for the 'isAdmin' flag to certain routes, this way we can display more functionality to the admins
+- 2. We will first create a route to get users for the admin
+- 3. Go into backend and our (userController.js) to create the endpoint for this
+- 4. Then we will add it to our (userRoutes.js) file
+- 5. To prevent anybody from hitting this route thats not an admin we will go to our (authMiddleware.js)
+- 6. We will then create our middleware and import it back into our route file and call it as a second parameter
+
+ADMIN USER LIST
+- 1. We will start on this workflow in the frontend (userConstants.js)
+- 2. Create the USER_LIST constants
+- 3. Create the reducer in (userReducer.js)
+- 4. Add the reducer to our (store.js)
+- 5. We will now create our userAction 'listUsers'
+- 6. We will now create the screen that admins can look at to observe users (UserListScreen.js)
+- 7. Add our (UserListScreen.js) to our (App.js)
+- 8. For an Admin to actually access this page we will need an admin dropdown in the (Header.js)
+- 9. To do this we will need the logged in usersInfo to see if they are an admin
+
+ADMIN SCREEN ACCESS SECURITY
+- 1. We will be address two main issues with admin screen security
+- - 1. When you logout on the admin screen it still stays on that screen it doesn't reset
+- - 2. When you are logged in as a user thats not an admin and you try to hit the /admin/users route it gives you an error message, but we just want to redirect
+- 2. We will go to our (UserListScreen.js) and add our userLogin state info so we can make checks
+- 3. To accomplish this we will create a reset action like we did with USER_DETAILS
+- 4. We will create a new constant is (userConstants.js)
+- 5. Create the reducer for our user_list_reset
+- 6. Import the reducer into the store
+- 7. Add the USER_LIST_RESET reducer to our logout action in (userActions.js)
+
+ADMIN USER DELETE
+- 1. Start in backend (userController.js) - We will be creating the delete user functionality
+- 2. Bring our deleteUser controller into our (userRoutes.js)
+- 3. Test in postman 
+- 4. Go to frontend and create our (userConstants.js) for deleting
+- 5. Create our reducer
+- 6. Import userDeleteReducer into (store.js)
+- 7. Create our userDelete action
+- 8. Implement delete functionality on admin screen
+
+GET USER BY ID & UPDATE USER ENDPOINT
+- 1. Backend (userController.js) create routes to get a user by id and update that users info
+- 2. Create our getUserById and updateUser controller in (userController.js) so as an Admin we can find and update users
+- 3. Import them into our routes file
+
+USER EDIT SCREEN AND FETCHING USER FROM BACKEND
+- 1. Create EditUserScreen.js
+- 2. Once we get the basics created add it to (App.js)
+- 3. Once we get the screen create we will create the Update User functionality
+
+UPDATE USER FUNCTIONALITY
+- 1. Create our constants for user updating
+- 2. Create our reducer for user updating
+- 3. Add our reducer to our store.js
+- 4. Create the updateUser action
+- 5. Add the functionality to our UserEditScreen.js (call action)
+- 6. We will also bring in the USER_UPDATE_RESET constant so we can dispatch from our screen
+
+
+
+
+
