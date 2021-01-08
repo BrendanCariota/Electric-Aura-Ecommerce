@@ -1,11 +1,20 @@
 import axios from 'axios'
 import { 
+    PRODUCT_CREATE_FAIL,
+    PRODUCT_CREATE_REQUEST,
+    PRODUCT_CREATE_SUCCESS,
+    PRODUCT_DELETE_FAIL,
+    PRODUCT_DELETE_REQUEST,
+    PRODUCT_DELETE_SUCCESS,
     PRODUCT_DETAILS_FAIL, 
     PRODUCT_DETAILS_REQUEST, 
     PRODUCT_DETAILS_SUCCESS, 
     PRODUCT_LIST_FAIL, 
     PRODUCT_LIST_REQUEST, 
-    PRODUCT_LIST_SUCCESS 
+    PRODUCT_LIST_SUCCESS, 
+    PRODUCT_UPDATE_FAIL, 
+    PRODUCT_UPDATE_REQUEST,
+    PRODUCT_UPDATE_SUCCESS
 } from '../constants/productConstants'
 
 export const listProducts = () => async (dispatch) => {
@@ -37,6 +46,90 @@ export const listProductDetails = (id) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: PRODUCT_DETAILS_FAIL,
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
+        })
+    }
+}
+
+export const deleteProduct = (id) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: PRODUCT_DELETE_REQUEST
+        })
+
+        const {userLogin: { userInfo } } = getState() // Destructures so we can easily access our userInfo and token
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}` // Pass the token for authentication purposes
+            }
+        }
+
+        await axios.delete(`/api/products/${id}`, config) // Second parameter users is what we want to update with
+
+        dispatch({
+            type: PRODUCT_DELETE_SUCCESS,
+        })
+
+    } catch (error) {
+        dispatch({
+            type: PRODUCT_DELETE_FAIL,
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
+        })
+    }
+}
+
+export const createProduct = () => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: PRODUCT_CREATE_REQUEST
+        })
+
+        const {userLogin: { userInfo } } = getState() // Destructures so we can easily access our userInfo and token
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}` // Pass the token for authentication purposes
+            }
+        }
+
+        const { data } = await axios.post(`/api/products`, {}, config) // Second parameter users is what we want to update with
+
+        dispatch({
+            type: PRODUCT_CREATE_SUCCESS,
+            payload: data // Send our newly created product (In this case it's just a generic sample product)
+        })
+
+    } catch (error) {
+        dispatch({
+            type: PRODUCT_CREATE_FAIL,
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
+        })
+    }
+}
+
+export const updateProduct = (product) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: PRODUCT_UPDATE_REQUEST
+        })
+
+        const {userLogin: { userInfo } } = getState() // Destructures so we can easily access our userInfo and token
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}` // Pass the token for authentication purposes
+            }
+        }
+
+        const { data } = await axios.put(`/api/products/${product._id}`, product, config) // Second parameter users is what we want to update with
+
+        dispatch({ type: PRODUCT_UPDATE_SUCCESS, payload: data })
+
+    } catch (error) {
+        dispatch({
+            type: PRODUCT_UPDATE_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
         })
     }

@@ -228,7 +228,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
 
         const config = {
             headers: {
-                'Content-Type': 'applicatin/json',
+                'Content-Type': 'application/json',
                 Authorization: `Bearer ${userInfo.token}` // Pass the token for authentication purposes
             }
         }
@@ -236,8 +236,8 @@ export const updateUser = (user) => async (dispatch, getState) => {
         const { data } = await axios.put(`/api/users/${user._id}`, user, config) // Second parameter users is what we want to update with
 
         dispatch({ type: USER_UPDATE_SUCCESS })
-        dispatch({ type: USER_DETAILS_SUCCESS, payload: data })
-        console.log(user) // Pass 'data' which is our updated user to details success so our details will update when we update the user on the admin side
+
+        dispatch({ type: USER_DETAILS_SUCCESS, payload: data }) // Pass 'data' which is our updated user to details success so our details will update when we update the user on the admin side
 
     } catch (error) {
         dispatch({

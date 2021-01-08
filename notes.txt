@@ -355,7 +355,68 @@ UPDATE USER FUNCTIONALITY
 - 5. Add the functionality to our UserEditScreen.js (call action)
 - 6. We will also bring in the USER_UPDATE_RESET constant so we can dispatch from our screen
 
+ADMIN PRODUCT LIST
+- 1. Create admin product list page (ProudctListScreen.js)
+- 2. Once screen is create add it to (App.js)
 
+ADMIN DELETE PRODUCT FUNCTIONALITY
+- 1. Start in Backend and create our controller and route for deleting a product (productController.js) (productRoutes.js) make sure to include the authMiddleware
+- 2. We will now create the constants for PRODUCT_DELETE
+- 3. Create the product delete reducer
+- 4. Add the reducer to (store.js)
+- 5. Create the deleteProduct action
+- 6. Implement deleting a product on (ProductListScreen.js)
+
+CREATE AND UPDATE PRODUCTS ENDPOINT
+- 1. Create our controllers in the backend (productControllers.js)
+- 2. Add our routes to (productRoutes.js)
+- 3. Create and test Postman routes
+
+ADMIN CREATE PRODUCT
+- 1. Create PRODUCT_CREATE constants in (productConstant.js)
+- 2. Create our productCreateReducer in (productReducers.js)
+- 3. Add our productCreateReducer to our (store.js)
+- 4. Create our productCreate action in (productActions.js)
+- 5. Add our action and state to (ProductListScreen.js) so we can create products from the frontend
+
+EDIT PRODUCT SCREEN
+- 1. Create (ProductEditScreen.js)
+- 2. Add this screen to our (App.js)
+
+ADMIN UPDATE PRODUCT
+- 1. Create our PRODUCTS_UPDATES constants
+- 2. Create our productUpdateReducer
+- 3. Add that reducer to our (store.js)
+- 4. Create our updateProduct action
+- 5. Add the functionality to our (ProductEditScreen.js)
+
+IMAGE UPLOAD CONFIG AND ENDPOINT
+- 1. Need to start in the backend and create an endpoint for /api/upload
+- 2. To do this we will install a package called 'multer'
+- 3. Create a (uploads) folder in the root to store our uploaded images
+- 4. In the backend in our (routes) folder create a new route called (uploadRoutes.js)
+- 5. In the file we create our route as well as configure multer
+- 6. Once we get the route and the multer config setup we need to add the path to (server.js)
+- 7. Now we need to make our (uploads) folder a static folder so that it is accessable by default
+- 8. To make it static we will go to our (server.js) and add the line of code to make it static (line 36)
+
+FRONTEND IMAGE UPLOAD
+- 1. We will go to our (ProductEditScreen.js)
+- 2. Import axios and create a state variable for uploading
+
+ADMIN ORDER LIST
+- 1. Add our backend route to get all of our orders
+- 2. In (orderController.js) we will create a new function
+- 3. In (orderRoutes.js) we will add our controller to our /api/orders route
+- 4. Create test routes in Postman to make sure it works
+- 5. Creaet constants for ORDER_MY_LIST_RESET
+- 6. Create reducer for orderListReducer
+- 7. Add reducer to (store.js)
+- 8. Create listOrders action
+- 9. Implement into OrderListScreen.js
+
+MARK ORDER AS DELIVERED
+- 1. 
 
 
 
