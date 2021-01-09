@@ -416,7 +416,23 @@ ADMIN ORDER LIST
 - 9. Implement into OrderListScreen.js
 
 MARK ORDER AS DELIVERED
-- 1. 
+- 1. Start with our (orderController.js) in the backend
+- 2. When we create or controller we need to add it to our (orderRoutes.js)
+- 3. Next go to frontend and create new constants for ORDER_DELIVER in (ordercConstants.js)
+- 4. Create our reducer
+- 4. Import reducer to (store.js)
+- 5. Create action
+- 6. Implement into screen (OrderScreen.js) is where we want the button to mark as delivered
+
+MORGAN AND CREATE REVIEW ENDPOINT
+- - Morgan is just a package that lets you see when someone hits a route in the console
+- 1. npm install morgan
+- 2. Import morgan in (server.js) and add  the middleware
+- 3. Setup our controller in (productController.js)
+- 4. Add the controller in (productRoutes.js)
+- 5. Test with Postman
+
+FRONTEND PRODUCT REVIEWS
 
 
 
