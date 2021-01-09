@@ -433,6 +433,14 @@ MORGAN AND CREATE REVIEW ENDPOINT
 - 5. Test with Postman
 
 FRONTEND PRODUCT REVIEWS
+- 1. Create constants for reviews in (productConstants.js)
+- 2. Create the reducer
+- 3. Add the reducer to the store
+- 4. Create the action for creating product reviews
+- 5. Add the functionality to the Screen (ProductScreen.js)
+
+
+
 
 
 

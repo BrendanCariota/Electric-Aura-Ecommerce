@@ -104,10 +104,10 @@ const createProductReview = asyncHandler(async (req, res) => {
 
     if(product) {
         // This will be true if the logged in user already has a review on the product
-        const alreadyReviewed = product.reviews.find(r => r.user.toString() === req.user._id.toString())
+        const alreadyReviewed = product.reviews.find((r) => r.user.toString() === req.user._id.toString())
 
         if(alreadyReviewed) {
-            res.send(400)
+            res.status(404)
             throw new Error('Product already reviewed')
         }
 
