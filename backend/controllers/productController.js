@@ -5,9 +5,22 @@ import Product from '../models/productModel.js'
 // @route   GET /api/products
 // @access  Public
 const getProducts = asyncHandler(async (req, res) => {
-    const products = await Product.find({}) //Empty object will return everything
+    // Add pagination functionality
+    const pageSize = 10 // How many items show before a new page is create
+    const page = Number(req.query.pageNumber) || 1 // This looks for the page number you're on in the URL
 
-    res.json(products)
+    // This is how you get queries in the URL (?=)
+    const keyword = req.query.keyword ? {
+        name: {
+            $regex: req.query.keyword, // This will allow searches even if the word isn't spelled exactly (iph = iphone)
+            $options: 'i'
+        }
+    } : {}
+    
+    const count = await Product.countDocuments({ ...keyword }) // Counts the number of products in our database for pagination purposes
+    const products = await Product.find({ ...keyword }).limit(pageSize).skip(pageSize * (page - 1)) //Empty object will return everything, .limit() only lets us get the number of Products we pass into it, skip and the math will let us skip the products in the database when we go to the second page
+
+    res.json({ products, page, pages: Math.ceil(count / pageSize) }) // This will send us the products as well as the page we are on and the number of pages we should have based on the number of products we have
 })
 
 // @desc    Fetch a single product

@@ -439,8 +439,34 @@ FRONTEND PRODUCT REVIEWS
 - 4. Create the action for creating product reviews
 - 5. Add the functionality to the Screen (ProductScreen.js)
 
+PRODUCT SEARCH
+- 1. Create the search box component (SearchBox.js)
+- 2. Add the /search/:keyword route to our (App.js) and render the HomeScreen
+- 3. Embed the SearchBox component in our (Header.js)
+- 4. Give function to SearchBox
+- 5. Start in (HomeScreen.js)
+- 6. We need to update our (listProducts) action
+- 7. Once we add it to our action we have to account for it in the backend
+- 8. In the backend go to our (productController.js)
+- 9. To make it work for multiple searches we can't forget to add keywords as a dependencies to our useEffect so it will reload when keywords changes
 
+PAGINATION
+- 1. Start in the BackEnd for pagination
+- 2. In our (productController.js)
+- 3. Once we update our getProducts function in (productController.js) we need to return to the frontend so that we can fix our map because we are now sending multiple pieces of info on our request
+- 4. Edit (productActions.js) listProducts. We will pass our pageNumber into our action
+- 5. We then need to account for the fact that we are passing back several forms of information now in our (productReducer.js)
+- 6. To do this in (productReducer.js) we will specify the payload on our PROUDCT_LIST_SUCCESS
+- 7. We need to add the new routes for pages in (App.js)
+- 8. We now need to account for these new routes in our (HomeScreen.js)
+- 9. Now that we have the functionality in we will create a (Pagination) component to navigate
+- 10. Once we create the Paginate component we need to import it to our (HomeScreen.js)
+- 11. We will now add Pagination functionality to our Admin dashboard feautres
+- 12. It using the same endpoint in the backend as our HomeScreen so it is already limiting the products that are showing
+- 13. However we still need to navigate to se will go to our (ProductListScreen.js) and add the Pagination component
+- 14. We must also pass the pageNumber as a parameter to our listProducts action so we will get it from the URL like in (HomeScreen.js)
+- 15. We have to do is in our (Paginate.js) component we have to use the isAdmin prop we passed in to distinguish if we are on the Admin Product List or just the HomePage
+- 16. The last thing we need to do is create the route in (App.js) for our /productlist/pageNumber Pagination
 
-
-
-
+TOP PRODUCTS CAROUSEL
+- 1. 
