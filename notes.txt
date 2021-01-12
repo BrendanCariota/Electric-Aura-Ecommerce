@@ -469,4 +469,14 @@ PAGINATION
 - 16. The last thing we need to do is create the route in (App.js) for our /productlist/pageNumber Pagination
 
 TOP PRODUCTS CAROUSEL
-- 1. 
+- 1. Create the route to get our Top Products in the backend
+- 2. Create route in (productController.js)
+- 3. Add to (productRoutes.js)
+- 4. We now need to create our constants for this in (productConstants.js)
+- 5. Create the reducer to get our top products
+- 6. Add reducer to our (store.js)
+- 7. Create the action to get our top products
+- 8. Create the component (ProductCarousel.js)
+- 9  Once we create the component we will add it to our (HomeScreen.js)
+
+
