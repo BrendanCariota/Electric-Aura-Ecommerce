@@ -479,4 +479,10 @@ TOP PRODUCTS CAROUSEL
 - 8. Create the component (ProductCarousel.js)
 - 9  Once we create the component we will add it to our (HomeScreen.js)
 
+CUSTOM PAGES TITLES AND META
+- 1. Install react-helmet
+- 2. Create a new (Meta.js) component to wrap our helmet
+- 3. Import that Meta component wherever we want Helmet data
+- 4. 
+
 
