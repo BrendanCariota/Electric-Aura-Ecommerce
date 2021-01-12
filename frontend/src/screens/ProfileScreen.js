@@ -6,6 +6,7 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
 import { listMyOrders } from '../actions/orderActions'
+import { USER_UPDATE_PROFILE_RESET } from '../constants/userContants'
 
 const ProfileScreen = ({ history }) => {
     const [name, setName] = useState('')
@@ -35,7 +36,8 @@ const ProfileScreen = ({ history }) => {
         if(!userInfo) {
             history.push('/login')
         } else {
-            if(!user.name) {
+            if(!user || !user.name || success) {
+                dispatch({ type: USER_UPDATE_PROFILE_RESET })
                 dispatch(getUserDetails('profile'))
                 dispatch(listMyOrders()) // Get and List the Users orders on their profile page
             } else {
@@ -43,7 +45,7 @@ const ProfileScreen = ({ history }) => {
                 setEmail(user.email)
             }
         }
-    }, [dispatch, history, userInfo, user])
+    }, [dispatch, history, userInfo, user, success])
 
     const submitHandler = (e) => {
         e.preventDefault()

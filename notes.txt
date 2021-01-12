@@ -502,6 +502,15 @@ DEPLOY TO HEROKU
 - 6. Create a new application heroku create 'app name'
 - 7. Before we push to Heroku we need to add a (Procfile) file in the root which tells Heroku what to run
 - 8. We now need to add that Post Build Script in our package.json so it will run and install on our server
-- 9. 
+- 9. We need to add Heroku as a remote repository
+- - 1. Go to Heroku website and deploy on our app
+- - 2. Copy the heroku git: remote - line and paste it in terminal
+- 10. We can now push 'git push heroku master'
+- - 1. When we want to update this we push our changes to our github repo then run that line again to push to heroku
+- 11. We need to go to heroku and add the env information to our backend for our site to work
+- - 1. To do this go to Heroku website and click on your application
+- - 2. Go to settings and click on Config vars
+- - 3. Here we will add all of our env variables
+
 
 
