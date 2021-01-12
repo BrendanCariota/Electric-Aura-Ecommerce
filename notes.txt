@@ -492,4 +492,16 @@ GETTING READY FOR DEPLOYMENT
 - 3. When ready to deploy we need to go into our (.env) file and change our NODE_ENV to 'production'
 - 4. We can then test if things work by running npm start because that's what Heroku will run 
 
+DEPLOY TO HEROKU
+- 1. We will change our NODE_ENV back to deployment
+- 2. Make sure env is included in .gitignore because we don't want to push that file to github for securtiy reasons. We can set up our environment in Heroku
+- 3. We also don't want to include our build folder we need to make sure its /frontend/build because our build folder is in our frontend
+- - We do this because in our package.json we will add a Heroku Post Build Script that will run npm run build that will run and build it on the server
+- 4. Setup Heroku
+- 5. Login to Heroku wiht heroku login
+- 6. Create a new application heroku create 'app name'
+- 7. Before we push to Heroku we need to add a (Procfile) file in the root which tells Heroku what to run
+- 8. We now need to add that Post Build Script in our package.json so it will run and install on our server
+- 9. 
+
 
