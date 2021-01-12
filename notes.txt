@@ -483,6 +483,13 @@ CUSTOM PAGES TITLES AND META
 - 1. Install react-helmet
 - 2. Create a new (Meta.js) component to wrap our helmet
 - 3. Import that Meta component wherever we want Helmet data
-- 4. 
+
+GETTING READY FOR DEPLOYMENT
+- - When we deploy instead of running our frontend and backend at the same time with concurrently. We need to have our backend start and then load the index.html file from our frontend
+- - To do this we need to build out our frontend file
+- 1. Cd into frontend and run npm run build
+- 2. Go to (server.js) in the backend and have it load our index.html file when the server starts
+- 3. When ready to deploy we need to go into our (.env) file and change our NODE_ENV to 'production'
+- 4. We can then test if things work by running npm start because that's what Heroku will run 
 
 

@@ -27,11 +27,6 @@ if(process.env.NODE_ENV === 'development') {
 // Allows us to accepted JSON data in the body
 app.use(express.json())
 
-// Home page
-app.get('/', (req, res) => {
-    res.send('API is running.')
-})
-
 // SETTING UP ROUTES
 app.use('/api/products', productRoutes) //Products
 app.use('/api/users', userRoutes) //Users
@@ -43,6 +38,18 @@ app.get('/api/config/paypal', (req, res) => res.send(process.env.PAYPAL_CLIENT_I
 // Make our uploads folder static so it's accessable by default
 const __dirname = path.resolve()
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
+
+// SETUP FOR DEPLOYMENT
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '/frontend/build')))
+
+    app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html')))
+} else {
+    // Home page THIS SHOULDN'T RUN FOR PRODUCTION
+    app.get('/', (req, res) => {
+    res.send('API is running.')
+})
+}
 
 // Calling our MIDDLEWARE
 app.use(notFound)
