@@ -37,7 +37,7 @@ const ProfileScreen = ({ history }) => {
             history.push('/login')
         } else {
             if(!user || !user.name || success) {
-                dispatch({ type: USER_UPDATE_PROFILE_RESET })
+                dispatch({ type: USER_UPDATE_PROFILE_RESET }) //Reseting so the name changes when you update the user info
                 dispatch(getUserDetails('profile'))
                 dispatch(listMyOrders()) // Get and List the Users orders on their profile page
             } else {

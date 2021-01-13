@@ -512,5 +512,7 @@ DEPLOY TO HEROKU
 - - 2. Go to settings and click on Config vars
 - - 3. Here we will add all of our env variables
 
+THINGS TO FIX: 
+
 
 
